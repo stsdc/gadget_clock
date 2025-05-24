@@ -1,0 +1,38 @@
+{
+    "id" : "dev.stsdc.gadget_clock",
+    "runtime" : "org.gnome.Sdk",
+    "runtime-version" : "48",
+    "sdk" : "org.gnome.Sdk",
+    "command" : "gadget_clock",
+    "finish-args" : [],
+    "cleanup" : [
+        "/include",
+        "/lib/pkgconfig",
+        "/man",
+        "/share/doc",
+        "/share/gtk-doc",
+        "/share/man",
+        "/share/pkgconfig",
+        "*.la",
+        "*.a"
+    ],
+    "modules" : [
+        {
+            "name" : "gadget_clock",
+            "builddir" : true,
+            "buildsystem" : "meson",
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "file:///home/stsdc/Projects"
+                }
+            ],
+            "config-opts" : [
+                "--libdir=lib"
+            ]
+        }
+    ],
+    "build-options" : {
+        "env" : {        }
+    }
+}
