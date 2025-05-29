@@ -1,26 +1,34 @@
 #include "clock.h"
 #include <iostream>
 
-HelloWorld::HelloWorld()
-: m_button("Hello World")   // creates a new button with label "Hello World".
+GadgetClock::GadgetClock ()
 {
+  set_title ("DrawingArea");
+  set_default_size (300, 200);
+
+  m_box.append (m_area);
+
   // Sets the margin around the button.
-  m_button.set_margin(10);
+  m_button.set_label ("asdad");
+  m_button.set_margin (10);
 
   // When the button receives the "clicked" signal, it will call the
   // on_button_clicked() method defined below.
-  m_button.signal_clicked().connect(sigc::mem_fun(*this,
-              &HelloWorld::on_button_clicked));
+  m_button.signal_clicked ().connect (sigc::mem_fun (*this,
+                                                     &GadgetClock::on_button_clicked));
 
-  // This packs the button into the Window (a container).
-  set_child(m_button);
+  m_box.append (m_button);
+
+  set_child (m_box);
 }
 
-HelloWorld::~HelloWorld()
+GadgetClock::~GadgetClock ()
 {
 }
 
-void HelloWorld::on_button_clicked()
+void
+GadgetClock::on_button_clicked ()
 {
   std::cout << "Hello World" << std::endl;
 }
+

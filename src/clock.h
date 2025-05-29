@@ -1,16 +1,18 @@
 
-#ifndef GTKMM_EXAMPLE_HELLOWORLD_H
-#define GTKMM_EXAMPLE_HELLOWORLD_H
+#ifndef GTKMM_EXAMPLE_GadgetClock_H
+#define GTKMM_EXAMPLE_GadgetClock_H
 
-#include <gtkmm/button.h>
-#include <gtkmm/window.h>
+#include "clockarea.h"
+#include <gtkmm.h>
 
-class HelloWorld : public Gtk::Window
+
+
+class GadgetClock : public Gtk::Window
 {
 
 public:
-  HelloWorld ();
-  ~HelloWorld () override;
+  GadgetClock ();
+  ~GadgetClock () override;
 
 protected:
   // Signal handlers:
@@ -18,6 +20,10 @@ protected:
 
   // Member widgets:
   Gtk::Button m_button;
+Gtk::Box m_box;
+  MyArea m_area;
+
+
 };
 
 #endif
