@@ -4,7 +4,7 @@
 GadgetClock::GadgetClock ()
 {
   set_title ("DrawingArea");
-  set_default_size (300, 200);
+  set_default_size (200, 200);
 
   m_box.append (m_area);
 
@@ -17,7 +17,7 @@ GadgetClock::GadgetClock ()
   m_button.signal_clicked ().connect (sigc::mem_fun (*this,
                                                      &GadgetClock::on_button_clicked));
 
-  m_box.append (m_button);
+  // m_box.append (m_button);
 
   set_child (m_box);
 }

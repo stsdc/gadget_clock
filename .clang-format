@@ -2,3 +2,4 @@
 BasedOnStyle: Google
 Language: Cpp
 Standard: Cpp11
+ColumnLimit: 0
