@@ -15,6 +15,7 @@ gadget_clock_deps = [
 
 executable('gadget_clock', gadget_clock_sources,
 images_gresource,
+styles_gresource,
   dependencies: gadget_clock_deps,
   install: true,
 )

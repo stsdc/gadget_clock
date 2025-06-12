@@ -8,10 +8,10 @@
 
 #include <cmath>
 
-class MyArea : public Gtk::DrawingArea {
+class ClockArea : public Gtk::DrawingArea {
  public:
-  MyArea();
-  virtual ~MyArea();
+  ClockArea();
+  virtual ~ClockArea();
 
  protected:
   void on_draw(const Cairo::RefPtr<Cairo::Context>& cr, int width, int height);
