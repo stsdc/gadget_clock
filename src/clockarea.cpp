@@ -8,6 +8,9 @@
 #include "clockarea.h"
 
 ClockArea::ClockArea() : m_radius(0.42), m_line_width(0.05) {
+
+    this->set_tooltip_text("Artwork by Ramon Fernandez (rodfdez)");
+
   try {
     image_bg = Gdk::Pixbuf::create_from_resource("/dev/stsdc/gadget_clock/images/body.png");
   } catch (const Gio::ResourceError &ex) {
@@ -67,7 +70,7 @@ void ClockArea::on_draw(const Cairo::RefPtr<Cairo::Context> &cr, int width, int 
   cr->fill();
   cr->save();
 
-  Gdk::Cairo::set_source_pixbuf(cr, image_bg, (width - image_bg->get_width()) / 2, (height - image_bg->get_height()) / 2);
+  Gdk::Cairo::set_source_pixbuf(cr, image_bg, 0, 0);
   cr->paint();
   cr->save();
 

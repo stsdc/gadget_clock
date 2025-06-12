@@ -19,12 +19,14 @@ GadgetClock::GadgetClock() {
 
   // When the button receives the "clicked" signal, it will call the
   // on_button_clicked() method defined below.
-  m_button.signal_clicked().connect(sigc::mem_fun(*this,
-                                                  &GadgetClock::on_button_clicked));
+  m_button.signal_clicked().connect(sigc::mem_fun(*this, &GadgetClock::on_button_clicked));
 
   // m_box.append (m_button);
 
-  set_child(m_box);
+  auto grabbingarea = Gtk::WindowHandle();
+  grabbingarea.set_child(m_box);
+
+  set_child(grabbingarea);
 }
 
 GadgetClock::~GadgetClock() {
