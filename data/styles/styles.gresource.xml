@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-  <gresource prefix="/dev/stsdc/gadget_clock/styles">
+  <gresource prefix="/com/github/stsdc/gadget_clock/styles">
     <file>main.css</file>
   </gresource>
 </gresources>

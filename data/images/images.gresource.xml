@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-  <gresource prefix="/dev/stsdc/gadget_clock/images">
+  <gresource prefix="/com/github/stsdc/gadget_clock/images">
     <file>body.png</file>
     <file>seconds.png</file>
     <file>minutes.png</file>

@@ -8,7 +8,7 @@ GadgetClock::GadgetClock() {
   set_decorated(false);
 
   auto provider = Gtk::CssProvider::create();
-  provider->load_from_resource("/dev/stsdc/gadget_clock/styles/main.css");
+  provider->load_from_resource("/com/github/stsdc/gadget_clock/styles/main.css");
   this->get_style_context()->add_provider(provider, GTK_STYLE_PROVIDER_PRIORITY_USER);
 
   m_box.append(clockarea);

@@ -1,9 +1,9 @@
 {
-    "id" : "dev.stsdc.gadget_clock",
+    "id" : "com.github.stsdc.gadget_clock",
     "runtime" : "org.gnome.Platform",
     "runtime-version" : "48",
     "sdk" : "org.gnome.Sdk",
-    "command" : "gadget_clock",
+    "command" : "com.github.stsdc.gadget_clock",
     "finish-args" : [
             "--share=ipc",
         "--socket=fallback-x11",
@@ -29,8 +29,8 @@
             "buildsystem" : "meson",
             "sources" : [
                 {
-                    "type" : "git",
-                    "url" : "file:///home/stsdc/Projects"
+                    "path": ".",
+                    "type": "dir"
                 }
             ],
             "config-opts" : [

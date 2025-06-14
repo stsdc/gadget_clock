@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Clock Gadget
+Comment=Must have time telling gadget
+Exec=com.github.stsdc.gadget_clock
+Icon=com.github.stsdc.gadget_clock
+Keywords=time;clock;watch
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GTK;Utility;Other;

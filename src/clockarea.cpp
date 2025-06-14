@@ -9,10 +9,10 @@
 
 ClockArea::ClockArea() : m_radius(0.42), m_line_width(0.05) {
 
-    this->set_tooltip_text("Artwork by Ramon Fernandez (rodfdez)");
+    this->set_tooltip_text("Artwork by Ramon Fernandez (2009)");
 
   try {
-    image_bg = Gdk::Pixbuf::create_from_resource("/dev/stsdc/gadget_clock/images/body.png");
+    image_bg = Gdk::Pixbuf::create_from_resource("/com/github/stsdc/gadget_clock/images/body.png");
   } catch (const Gio::ResourceError &ex) {
     std::cerr << "ResourceError: " << ex.what() << std::endl;
   } catch (const Gdk::PixbufError &ex) {
@@ -20,7 +20,7 @@ ClockArea::ClockArea() : m_radius(0.42), m_line_width(0.05) {
   }
 
   try {
-    image_sec = Gdk::Pixbuf::create_from_resource("/dev/stsdc/gadget_clock/images/seconds.png");
+    image_sec = Gdk::Pixbuf::create_from_resource("/com/github/stsdc/gadget_clock/images/seconds.png");
   } catch (const Gio::ResourceError &ex) {
     std::cerr << "ResourceError: " << ex.what() << std::endl;
   } catch (const Gdk::PixbufError &ex) {
@@ -28,7 +28,7 @@ ClockArea::ClockArea() : m_radius(0.42), m_line_width(0.05) {
   }
 
   try {
-    image_min = Gdk::Pixbuf::create_from_resource("/dev/stsdc/gadget_clock/images/minutes.png");
+    image_min = Gdk::Pixbuf::create_from_resource("/com/github/stsdc/gadget_clock/images/minutes.png");
   } catch (const Gio::ResourceError &ex) {
     std::cerr << "ResourceError: " << ex.what() << std::endl;
   } catch (const Gdk::PixbufError &ex) {
@@ -36,7 +36,7 @@ ClockArea::ClockArea() : m_radius(0.42), m_line_width(0.05) {
   }
 
   try {
-    image_hou = Gdk::Pixbuf::create_from_resource("/dev/stsdc/gadget_clock/images/hours.png");
+    image_hou = Gdk::Pixbuf::create_from_resource("/com/github/stsdc/gadget_clock/images/hours.png");
   } catch (const Gio::ResourceError &ex) {
     std::cerr << "ResourceError: " << ex.what() << std::endl;
   } catch (const Gdk::PixbufError &ex) {
