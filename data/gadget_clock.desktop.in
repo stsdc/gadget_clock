@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=Clock Gadget
-Comment=Must have time telling gadget
-Exec=com.github.stsdc.gadget_clock
-Icon=com.github.stsdc.gadget_clock
+Comment=Decorate your desktop with a stylish clock
+Exec=io.github.stsdc.gadget_clock
+Icon=io.github.stsdc.gadget_clock
 Keywords=time;clock;watch
 Terminal=false
 Type=Application
