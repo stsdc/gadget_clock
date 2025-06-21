@@ -1,5 +1,5 @@
-#ifndef GTKMM_EXAMPLE_MYAREA_H
-#define GTKMM_EXAMPLE_MYAREA_H
+#ifndef CLOCKAREA_H
+#define CLOCKAREA_H
 
 #include <gdkmm/pixbuf.h>
 #include <glibmm/main.h>
@@ -27,5 +27,5 @@ class ClockArea : public Gtk::DrawingArea {
   Glib::RefPtr<Gdk::Pixbuf> image_hou;
 };
 
-#endif  // GTKMM_EXAMPLE_MYAREA_H
+#endif  // CLOCKAREA_H
 

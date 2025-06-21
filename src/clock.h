@@ -1,5 +1,5 @@
-#ifndef GTKMM_EXAMPLE_GadgetClock_H
-#define GTKMM_EXAMPLE_GadgetClock_H
+#ifndef GadgetClock_H
+#define GadgetClock_H
 
 #include <gtkmm.h>
 
@@ -11,11 +11,6 @@ class GadgetClock : public Gtk::Window {
   ~GadgetClock() override;
 
  protected:
-  // Signal handlers:
-  void on_button_clicked();
-
-  // Member widgets:
-  Gtk::Button m_button;
   Gtk::Box m_box;
   ClockArea clockarea;
 };
