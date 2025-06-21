@@ -15,7 +15,7 @@
 
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/stsdc/gadget_clock/0.0.3/data/screenshot.png</image>
+      <image>https://raw.githubusercontent.com/stsdc/gadget_clock/0.4.0/data/screenshot.png</image>
     </screenshot>
   </screenshots>
 
@@ -42,6 +42,11 @@
   <update_contact>@stsdc</update_contact>
 
   <releases>
+    <release version="0.4.0" date="2025-06-21" urgency="medium">
+      <description>
+        <p>Code cleanup and small fixes for metainfo file.</p>
+      </description>
+    </release>
     <release version="0.3.0" date="2025-06-14" urgency="medium">
       <description>
         <p>This is an initial release!</p>
