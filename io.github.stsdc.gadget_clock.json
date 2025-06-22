@@ -9,7 +9,7 @@
         "--socket=fallback-x11",
         "--socket=wayland",
         "--device=dri"
-        ],
+    ],
     "cleanup" : [
         "/include",
         "/lib/pkgconfig",
@@ -32,13 +32,11 @@
                     "path": ".",
                     "type": "dir"
                 }
-            ],
-            "config-opts" : [
-                "--libdir=lib"
             ]
         }
     ],
     "build-options" : {
+        "libdir": "/app/lib",
         "env" : {        }
     }
 }
