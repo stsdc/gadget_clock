@@ -17,18 +17,6 @@
         "-Dbuild-demos=false",
         "-Dbuild-tests=false"
     ],
-    "cleanup": [
-        "*.a",
-        "*.la",
-        "/include",
-        "/lib/gdkmm-4.0",
-        "/lib/gtkmm-4.0",
-        "/lib/pkgconfig",
-        "/man",
-        "/share/aclocal",
-        "/share/man",
-        "/share/pkgconfig"
-    ],
     "modules": [
         {
             "name": "sigc++",
@@ -46,12 +34,6 @@
             "buildsystem": "meson",
             "config-opts": [
                 "-Dbuild-examples=false"
-            ],
-            "cleanup": [
-                "*.la",
-                "/include/sigc++-3.0",
-                "/lib/pkgconfig",
-                "/lib/sigc++-3.0"
             ]
         },
         {
@@ -70,15 +52,6 @@
             "buildsystem": "meson",
             "config-opts": [
                 "-Dbuild-examples=false"
-            ],
-            "cleanup": [
-                "*.la",
-                "/include/glibmm-2.68",
-                "/include/giomm-2.68",
-                "/lib/glibmm-2.68",
-                "/lib/giomm-2.68",
-                "/lib/libglibmm_generate_extra_defs*",
-                "/lib/pkgconfig"
             ]
         },
         {
@@ -98,12 +71,6 @@
             "buildsystem": "meson",
             "config-opts": [
                 "-Dbuild-examples=false"
-            ],
-            "cleanup": [
-                "*.la",
-                "/include",
-                "/lib/cairomm-1.16",
-                "/lib/pkgconfig"
             ]
         },
         {
@@ -119,13 +86,7 @@
                     }
                 }
             ],
-            "buildsystem": "meson",
-            "cleanup": [
-                "*.la",
-                "/include/pangomm-2.48",
-                "/lib/pangomm-2.48",
-                "/lib/pkgconfig"
-            ]
+            "buildsystem": "meson"
         },
         {
             "name": "atkmm",
@@ -140,13 +101,7 @@
                     }
                 }
             ],
-            "buildsystem": "meson",
-            "cleanup": [
-                "*.la",
-                "/include/atkmm-2.36",
-                "/lib/atkmm-2.36",
-                "/lib/pkgconfig"
-            ]
+            "buildsystem": "meson"
         }
     ]
 }
