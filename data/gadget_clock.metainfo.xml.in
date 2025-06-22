@@ -15,7 +15,7 @@
 
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/stsdc/gadget_clock/0.4.0/data/screenshot.png</image>
+      <image>https://raw.githubusercontent.com/stsdc/gadget_clock/0.5.0/data/screenshot.png</image>
     </screenshot>
   </screenshots>
 
@@ -26,7 +26,7 @@
     <value key="x-appcenter-color-primary">#000000</value>
   </custom>
 
-  <content_rating type="oars-1.1"/>
+  <content_rating type="oars-1.1" />
 
   <provides>
     <binary>io.github.stsdc.gadget_clock</binary>
@@ -42,6 +42,11 @@
   <update_contact>@stsdc</update_contact>
 
   <releases>
+    <release version="0.5.0" date="2025-06-22" urgency="medium">
+      <description>
+        <p>Fix dependency compilation.</p>
+      </description>
+    </release>
     <release version="0.4.0" date="2025-06-21" urgency="medium">
       <description>
         <p>Code cleanup and small fixes for metainfo file.</p>
@@ -57,4 +62,3 @@
     </release>
   </releases>
 </component>
-
