@@ -32,4 +32,6 @@
 *.app
 
 .flatpak
+.flatpak-builder
+build
 *~
