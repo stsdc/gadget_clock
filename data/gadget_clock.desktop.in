@@ -7,4 +7,4 @@ Keywords=time;clock;watch
 Terminal=false
 Type=Application
 StartupNotify=true
-Categories=GTK;Utility;Other;
+Categories=GTK;Utility;Clock;
