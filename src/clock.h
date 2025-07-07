@@ -5,6 +5,7 @@
 #include <memory>
 
 #include "clockarea.h"
+#include "settingswindow.cpp"
 
 class GadgetClock : public Gtk::Window {
  public:
@@ -19,9 +20,10 @@ class GadgetClock : public Gtk::Window {
 
   // Signals
   void on_label_pressed(int n_press, double x, double y);
-  void on_menu_file_popup_generic();
+  void on_menu_settings_popup();
 
   ClockArea clockarea;
+  // SettingsWindow settingswindow;
 };
 
 #endif
