@@ -8,9 +8,13 @@ void GadgetClock::on_label_pressed(int /* n_press */, double x, double y) {
   m_MenuPopup.popup();
 }
 
-void GadgetClock::on_menu_settings_popup() {
-    // settingswindow.show();
-  std::cout << "A popup menu item was selected." << std::endl;
+void GadgetClock::on_contextmenu_settings() {
+  std::cout << "Show settings window." << std::endl;
+  settingswindow.show();
+}
+
+void GadgetClock::on_contextmenu_close() {
+  std::cout << "Close" << std::endl;
 }
 
 GadgetClock::GadgetClock(const Glib::RefPtr<Gtk::Application>& app) {
@@ -31,24 +35,30 @@ GadgetClock::GadgetClock(const Glib::RefPtr<Gtk::Application>& app) {
 
   auto refActionGroup = Gio::SimpleActionGroup::create();
 
-  refActionGroup->add_action("settings", sigc::mem_fun(*this, &GadgetClock::on_menu_settings_popup));
+  refActionGroup->add_action("settings", sigc::mem_fun(*this, &GadgetClock::on_contextmenu_settings));
+  refActionGroup->add_action("close", sigc::mem_fun(*this, &GadgetClock::on_contextmenu_close));
 
-  insert_action_group("examplepopup", refActionGroup);
+  insert_action_group("contextmenu", refActionGroup);
 
   Glib::ustring ui_info =
       "<interface>"
-      "  <menu id='menu-examplepopup'>"
+      "  <menu id='menu-contextmenu'>"
       "    <section>"
       "      <item>"
       "        <attribute name='label' translatable='yes'>Settings</attribute>"
-      "        <attribute name='action'>examplepopup.edit</attribute>"
+      "        <attribute name='action'>contextmenu.settings</attribute>"
+      "      </item>"
+      "      <item>"
+      "        <attribute name='label' translatable='yes'>Close</attribute>"
+      "        <attribute name='action'>contextmenu.close</attribute>"
       "      </item>"
       "    </section>"
       "  </menu>"
       "</interface>";
 
   // Set accelerator keys:
-  // app->set_accel_for_action("examplepopup.edit", "<Primary>e");
+  app->set_accel_for_action("contextmenu.settings", "<Primary>p");
+  app->set_accel_for_action("contextmenu.close", "<Primary>q");
 
   m_refBuilder = Gtk::Builder::create();
 
@@ -58,10 +68,8 @@ GadgetClock::GadgetClock(const Glib::RefPtr<Gtk::Application>& app) {
     std::cerr << "building menus failed: " << ex.what();
   }
 
-
-
   // Get the menu:
-  auto gmenu = m_refBuilder->get_object<Gio::Menu>("menu-examplepopup");
+  auto gmenu = m_refBuilder->get_object<Gio::Menu>("menu-contextmenu");
   if (!gmenu)
     g_warning("GMenu not found");
 

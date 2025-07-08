@@ -20,10 +20,11 @@ class GadgetClock : public Gtk::Window {
 
   // Signals
   void on_label_pressed(int n_press, double x, double y);
-  void on_menu_settings_popup();
+  void on_contextmenu_settings();
+  void on_contextmenu_close();
 
   ClockArea clockarea;
-  // SettingsWindow settingswindow;
+  SettingsWindow settingswindow;
 };
 
 #endif

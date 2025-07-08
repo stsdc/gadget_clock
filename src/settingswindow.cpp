@@ -1,8 +1,8 @@
 #include "settingswindow.h"
 
 SettingsWindow::SettingsWindow() {
-  // set_title("Settings");
-  // set_default_size(400, 300);
+  set_title("Settings");
+  set_default_size(400, 300);
 }
 
 // void SettingsWindow::on_apply_clicked() {
