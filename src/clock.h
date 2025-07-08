@@ -5,7 +5,7 @@
 #include <memory>
 
 #include "clockarea.h"
-#include "settingswindow.cpp"
+#include "settingswindow.h"
 
 class GadgetClock : public Gtk::Window {
  public:
