@@ -6,6 +6,7 @@ GadgetClock::GadgetClock() {
   set_title("DrawingArea");
   set_default_size(200, 200);
   set_decorated(false);
+  set_resizable(false);
 
   auto provider = Gtk::CssProvider::create();
   provider->load_from_resource("/com/github/stsdc/gadget_clock/styles/main.css");
