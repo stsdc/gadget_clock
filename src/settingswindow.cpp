@@ -6,7 +6,6 @@ SettingsWindow::SettingsWindow() : m_VBox(Gtk::Orientation::VERTICAL) {
   set_destroy_with_parent(true);
   set_hide_on_close();
 
-  m_ScrolledWindow.set_child(m_ListView);
 
   // Only show the scrollbars when they are necessary:
   m_ScrolledWindow.set_policy(Gtk::PolicyType::AUTOMATIC, Gtk::PolicyType::AUTOMATIC);
@@ -24,11 +23,13 @@ SettingsWindow::SettingsWindow() : m_VBox(Gtk::Orientation::VERTICAL) {
 
   // Add the factory for the ListView's single column.
   auto factory = Gtk::SignalListItemFactory::create();
-  // factory->signal_setup().connect(sigc::mem_fun(*this, &SettingsWindow::on_setup_label));
+  factory->signal_setup().connect(sigc::mem_fun(*this, &SettingsWindow::on_setup_label));
   factory->signal_bind().connect(sigc::mem_fun(*this, &SettingsWindow::on_bind_name));
   m_ListView.set_factory(factory);
+  
 
   m_VBox.append(m_ScrolledWindow);
+  m_ScrolledWindow.set_child(m_ListView);
 
   set_child(m_VBox);
 }
@@ -57,4 +58,10 @@ void SettingsWindow::on_bind_name(const Glib::RefPtr<Gtk::ListItem>& list_item)
     return;
   label->set_text(m_StringList->get_string(pos));
 }
+
+void SettingsWindow::on_setup_label(const Glib::RefPtr<Gtk::ListItem>& list_item)
+{
+  list_item->set_child(*Gtk::make_managed<Gtk::Label>("", Gtk::Align::START));
+}
+
 

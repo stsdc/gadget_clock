@@ -1,18 +1,25 @@
+#include "clockarea.h"
+
 #include <cairomm/context.h>
 #include <gdkmm/general.h>  // set_source_pixbuf()
 #include <giomm/resource.h>
+#include <giomm/settings.h>
 #include <glibmm/fileutils.h>
+#include <gtkmm/settings.h>
 
 #include <iostream>
 
-#include "clockarea.h"
-
 ClockArea::ClockArea() : m_radius(0.42), m_line_width(0.05) {
+  this->set_tooltip_text("Artwork by Ramon Fernandez (2009)");
 
-    this->set_tooltip_text("Artwork by Ramon Fernandez (2009)");
+  // Get current skin from GSettings
+  auto settings = Gio::Settings::create("io.github.stsdc.gadget_clock");
+  Glib::ustring skin = settings->get_string("current-skin");
+
+  std::cout << "Current skin: " << skin << std::endl;
 
   try {
-    image_bg = Gdk::Pixbuf::create_from_resource("/com/github/stsdc/gadget_clock/images/body.png");
+    image_bg = Gdk::Pixbuf::create_from_resource("/io/github/stsdc/gadget_clock/images/" + skin + "/body.png");
   } catch (const Gio::ResourceError &ex) {
     std::cerr << "ResourceError: " << ex.what() << std::endl;
   } catch (const Gdk::PixbufError &ex) {
@@ -20,7 +27,7 @@ ClockArea::ClockArea() : m_radius(0.42), m_line_width(0.05) {
   }
 
   try {
-    image_sec = Gdk::Pixbuf::create_from_resource("/com/github/stsdc/gadget_clock/images/seconds.png");
+    image_sec = Gdk::Pixbuf::create_from_resource("/io/github/stsdc/gadget_clock/images/" + skin + "/seconds.png");
   } catch (const Gio::ResourceError &ex) {
     std::cerr << "ResourceError: " << ex.what() << std::endl;
   } catch (const Gdk::PixbufError &ex) {
@@ -28,7 +35,7 @@ ClockArea::ClockArea() : m_radius(0.42), m_line_width(0.05) {
   }
 
   try {
-    image_min = Gdk::Pixbuf::create_from_resource("/com/github/stsdc/gadget_clock/images/minutes.png");
+    image_min = Gdk::Pixbuf::create_from_resource("/io/github/stsdc/gadget_clock/images/" + skin + "/minutes.png");
   } catch (const Gio::ResourceError &ex) {
     std::cerr << "ResourceError: " << ex.what() << std::endl;
   } catch (const Gdk::PixbufError &ex) {
@@ -36,7 +43,7 @@ ClockArea::ClockArea() : m_radius(0.42), m_line_width(0.05) {
   }
 
   try {
-    image_hou = Gdk::Pixbuf::create_from_resource("/com/github/stsdc/gadget_clock/images/hours.png");
+    image_hou = Gdk::Pixbuf::create_from_resource("/io/github/stsdc/gadget_clock/images/" + skin + "/hours.png");
   } catch (const Gio::ResourceError &ex) {
     std::cerr << "ResourceError: " << ex.what() << std::endl;
   } catch (const Gdk::PixbufError &ex) {
@@ -117,4 +124,3 @@ void ClockArea::on_draw(const Cairo::RefPtr<Cairo::Context> &cr, int width, int 
 
   cr->restore();
 }
-

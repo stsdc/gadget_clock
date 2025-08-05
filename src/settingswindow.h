@@ -16,12 +16,14 @@ class SettingsWindow : public Gtk::Window {
   void on_theme_changed();
 
   void on_bind_name(const Glib::RefPtr<Gtk::ListItem>& list_item);
+  void on_setup_label(const Glib::RefPtr<Gtk::ListItem>& list_item);
 
   // Member widgets
   Gtk::Button m_apply_button;
   Gtk::Button m_cancel_button;
 
   Gtk::ScrolledWindow m_ScrolledWindow;
+  Gtk::ListBox m_ListBox;
   Gtk::ListView m_ListView;
   Glib::RefPtr<Gtk::StringList> m_StringList;
   Gtk::Box m_VBox;

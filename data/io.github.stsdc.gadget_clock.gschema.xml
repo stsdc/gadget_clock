@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="io.github.stsdc.gadget_clock" path="/io/github/stsdc/gadget_clock/">
+    <key name="current-skin" type="s">
+      <default>'br-01-94'</default>
+      <summary>Currently applied skin</summary>
+      <description>
+        Stores the name or identifier of the currently applied clock skin.
+      </description>
+    </key>
+  </schema>
+</schemalist>

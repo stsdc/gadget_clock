@@ -3,7 +3,7 @@ i18n = import('i18n')
 
 images_gresource = gnome.compile_resources(
     'gresource_images', 'images/images.gresource.xml',
-    source_dir: 'images',
+    source_dir: 'images/br-01-94',
     c_name: 'as1'
 )
 
@@ -45,4 +45,9 @@ i18n.merge_file(
     type: 'xml',
     install: true,
     install_dir: get_option('datadir') / 'metainfo',
+)
+
+install_data(
+    meson.project_name() + '.gschema.xml',
+    install_dir: join_paths(get_option('datadir'), 'glib-2.0', 'schemas')
 )
