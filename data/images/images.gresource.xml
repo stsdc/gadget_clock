@@ -6,4 +6,9 @@
     <file>minutes.png</file>
     <file>hours.png</file>
   </gresource>
+    <gresource prefix="/io/github/stsdc/gadget_clock/images/panerai-luminor-1">
+    <file>body.png</file>
+    <file>minutes.png</file>
+    <file>hours.png</file>
+  </gresource>
 </gresources>

@@ -10,7 +10,7 @@
 #include <iostream>
 
 ClockArea::ClockArea() : m_radius(0.42), m_line_width(0.05) {
-  this->set_tooltip_text("Artwork by Ramon Fernandez (2009)");
+  // this->set_tooltip_text("Artwork by Ramon Fernandez (2009)");
 
   // Get current skin from GSettings
   auto settings = Gio::Settings::create("io.github.stsdc.gadget_clock");

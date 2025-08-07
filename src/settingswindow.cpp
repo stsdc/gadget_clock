@@ -1,4 +1,5 @@
 #include "settingswindow.h"
+#include "settingsrow.h"
 
 SettingsWindow::SettingsWindow() : m_VBox(Gtk::Orientation::VERTICAL) {
   set_title("Settings");
@@ -6,30 +7,22 @@ SettingsWindow::SettingsWindow() : m_VBox(Gtk::Orientation::VERTICAL) {
   set_destroy_with_parent(true);
   set_hide_on_close();
 
-
   // Only show the scrollbars when they are necessary:
   m_ScrolledWindow.set_policy(Gtk::PolicyType::AUTOMATIC, Gtk::PolicyType::AUTOMATIC);
   m_ScrolledWindow.set_expand();
 
-  // Create the list model:
-  m_StringList = Gtk::StringList::create({"Billy Bob", "Joey Jojo", "Rob McRoberts"});
+  settingsListBox = Gtk::ListBox();
+  settingsListBox.set_selection_mode(Gtk::SelectionMode::SINGLE);
 
-  // Set list model and selection model.
-  auto selection_model = Gtk::SingleSelection::create(m_StringList);
-  selection_model->set_autoselect(false);
-  selection_model->set_can_unselect(true);
-  m_ListView.set_model(selection_model);
-  m_ListView.add_css_class("data-table");
+  populate_settings_list();
 
-  // Add the factory for the ListView's single column.
-  auto factory = Gtk::SignalListItemFactory::create();
-  factory->signal_setup().connect(sigc::mem_fun(*this, &SettingsWindow::on_setup_label));
-  factory->signal_bind().connect(sigc::mem_fun(*this, &SettingsWindow::on_bind_name));
-  m_ListView.set_factory(factory);
-  
+  // Connect row activated signal
+  settingsListBox.signal_row_activated().connect(
+      sigc::mem_fun(*this, &SettingsWindow::on_row_activated));
+
 
   m_VBox.append(m_ScrolledWindow);
-  m_ScrolledWindow.set_child(m_ListView);
+  m_ScrolledWindow.set_child(settingsListBox);
 
   set_child(m_VBox);
 }
@@ -48,9 +41,9 @@ SettingsWindow::SettingsWindow() : m_VBox(Gtk::Orientation::VERTICAL) {
 //     std::cout << "Theme changed to: " << std::endl;
 // }
 
-void SettingsWindow::on_bind_name(const Glib::RefPtr<Gtk::ListItem>& list_item)
-{
+void SettingsWindow::on_bind_name(const Glib::RefPtr<Gtk::ListItem>& list_item) {
   auto pos = list_item->get_position();
+  std::cout << "on_bind_name: position = " << pos << std::endl;
   if (pos == GTK_INVALID_LIST_POSITION)
     return;
   auto label = dynamic_cast<Gtk::Label*>(list_item->get_child());
@@ -59,9 +52,20 @@ void SettingsWindow::on_bind_name(const Glib::RefPtr<Gtk::ListItem>& list_item)
   label->set_text(m_StringList->get_string(pos));
 }
 
-void SettingsWindow::on_setup_label(const Glib::RefPtr<Gtk::ListItem>& list_item)
-{
+void SettingsWindow::on_setup_label(const Glib::RefPtr<Gtk::ListItem>& list_item) {
   list_item->set_child(*Gtk::make_managed<Gtk::Label>("", Gtk::Align::START));
 }
 
+void SettingsWindow::on_row_activated(Gtk::ListBoxRow* row) {
+  auto pos = row->get_index();
 
+  std::cout << "Row activated at position: " << pos << std::endl;
+  // Here you can handle the row activation, e.g., open a settings dialog for the selected item.
+}
+
+void SettingsWindow::populate_settings_list() {
+  SettingsRow row1 = SettingsRow("Bell & Ross BR 01-94", "Ramon Fernandez (2009)");
+  SettingsRow row2 = SettingsRow("Panerai", "Jimking");
+  settingsListBox.append(row1);
+  settingsListBox.append(row2);
+}
