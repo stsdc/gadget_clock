@@ -3,7 +3,8 @@
 
 class SettingsRow : public Gtk::ListBoxRow {
  public:
-  SettingsRow(const Glib::ustring& title, const Glib::ustring& subtitle);
+  SettingsRow(const Glib::ustring& title, const Glib::ustring& subtitle, const Glib::ustring& skin_id);
+  Glib::ustring* skin_id;
 
  private: 
   Gtk::Label* title_label;

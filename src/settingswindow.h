@@ -5,6 +5,8 @@
 
 #include <iostream>
 
+#include "settingsrow.h"  
+
 class SettingsWindow : public Gtk::Window {
  public:
   SettingsWindow();

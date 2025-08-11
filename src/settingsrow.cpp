@@ -1,10 +1,12 @@
 #include "settingsrow.h"
 
-SettingsRow::SettingsRow(const Glib::ustring& title, const Glib::ustring& subtitle) : 
-    title_label(Gtk::make_managed<Gtk::Label>(title)),
-    subtitle_label(Gtk::make_managed<Gtk::Label>(subtitle)) {
+SettingsRow::SettingsRow(const Glib::ustring& title, const Glib::ustring& subtitle,
+                         const Glib::ustring& skin_id) : title_label(Gtk::make_managed<Gtk::Label>(title)),
+                                                         subtitle_label(Gtk::make_managed<Gtk::Label>(subtitle)) {
   set_margin(5);
 
+  // Initialize skin_id
+  this->skin_id = new Glib::ustring(skin_id);
 
   // Create the main container
   auto box = Gtk::make_managed<Gtk::Box>(Gtk::Orientation::VERTICAL, 5);

@@ -1,5 +1,4 @@
 #include "settingswindow.h"
-#include "settingsrow.h"
 
 SettingsWindow::SettingsWindow() : m_VBox(Gtk::Orientation::VERTICAL) {
   set_title("Settings");
@@ -19,7 +18,6 @@ SettingsWindow::SettingsWindow() : m_VBox(Gtk::Orientation::VERTICAL) {
   // Connect row activated signal
   settingsListBox.signal_row_activated().connect(
       sigc::mem_fun(*this, &SettingsWindow::on_row_activated));
-
 
   m_VBox.append(m_ScrolledWindow);
   m_ScrolledWindow.set_child(settingsListBox);
@@ -57,15 +55,18 @@ void SettingsWindow::on_setup_label(const Glib::RefPtr<Gtk::ListItem>& list_item
 }
 
 void SettingsWindow::on_row_activated(Gtk::ListBoxRow* row) {
-  auto pos = row->get_index();
-
-  std::cout << "Row activated at position: " << pos << std::endl;
-  // Here you can handle the row activation, e.g., open a settings dialog for the selected item.
+  SettingsRow* settings_row = dynamic_cast<SettingsRow*>(row);
+  if (settings_row) {
+    std::cout << "Row label: " << settings_row->skin_id->c_str() << std::endl;
+    // Handle activation here
+  } else {
+    std::cerr << "Activated row is not a SettingsRow!" << std::endl;
+  }
 }
 
 void SettingsWindow::populate_settings_list() {
-  SettingsRow row1 = SettingsRow("Bell & Ross BR 01-94", "Ramon Fernandez (2009)");
-  SettingsRow row2 = SettingsRow("Panerai", "Jimking");
-  settingsListBox.append(row1);
-  settingsListBox.append(row2);
+  SettingsRow* row1 = Gtk::make_managed<SettingsRow>("Bell & Ross BR 01-94", "Ramon Fernandez (2009)", "br-01-94");
+  SettingsRow* row2 = Gtk::make_managed<SettingsRow>("Panerai", "Jimking", "panerai-luminor-1");
+  settingsListBox.append(*row1);
+  settingsListBox.append(*row2);
 }
