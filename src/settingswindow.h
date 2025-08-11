@@ -25,6 +25,7 @@ class SettingsWindow : public Gtk::Window {
 
 
   void populate_settings_list();
+  SettingsRow* get_settings_row_by_skin_id(const std::string& skin_id);
 
   // Member widgets
   Gtk::Button m_apply_button;

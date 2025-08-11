@@ -15,6 +15,16 @@ SettingsWindow::SettingsWindow() : m_VBox(Gtk::Orientation::VERTICAL) {
 
   populate_settings_list();
 
+  auto settings = Gio::Settings::create("io.github.stsdc.gadget_clock");
+  Glib::ustring skin = settings->get_string("current-skin");
+
+  SettingsRow* settings_row = get_settings_row_by_skin_id(skin);
+  auto row_to_select = settings_row ? settings_row : settingsListBox.get_row_at_index(0);
+  if (row_to_select) {
+    settingsListBox.select_row(*row_to_select);
+  }
+
+
   // Connect row activated signal
   settingsListBox.signal_row_activated().connect(
       sigc::mem_fun(*this, &SettingsWindow::on_row_activated));
@@ -69,4 +79,16 @@ void SettingsWindow::populate_settings_list() {
   SettingsRow* row2 = Gtk::make_managed<SettingsRow>("Panerai", "Jimking", "panerai-luminor-1");
   settingsListBox.append(*row1);
   settingsListBox.append(*row2);
+}
+
+SettingsRow* SettingsWindow::get_settings_row_by_skin_id(const std::string& skin_id) {
+  int index = 0;
+  SettingsRow* settings_row;
+  while ((settings_row = dynamic_cast<SettingsRow*>(settingsListBox.get_row_at_index(index)))) {
+    if (settings_row->skin_id && settings_row->skin_id->c_str() == skin_id) {
+      return settings_row;
+    }
+    index++;
+  }
+  return nullptr;
 }
