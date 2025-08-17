@@ -17,4 +17,4 @@ RUN if [ "${REINSTALL_CMAKE_VERSION_FROM_SOURCE}" != "none" ]; then \
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends libglib2.0-dev \
     && apt-get -y install --no-install-recommends libgtkmm-4.0-dev \
-    && apt-get -y install --no-install-recommends meson libgtk-4-bin
+    && apt-get -y install --no-install-recommends meson libgtk-4-bin dbus-x11 dbus

@@ -27,5 +27,7 @@
 		"--device=/dev/dri",
 		"--device=/dev/kfd",
 		"--group-add=video"
-	]
+	],
+
+	"postCreateCommand": "sudo service dbus start"
 }
