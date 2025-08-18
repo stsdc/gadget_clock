@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/io/github/stsdc/gadget_clock/images">
+    <file>br-01-94/body.png</file>
+    <file>br-01-94/seconds.png</file>
+    <file>br-01-94/minutes.png</file>
+    <file>br-01-94/hours.png</file>
+  </gresource>
+  <gresource prefix="/io/github/stsdc/gadget_clock/images">
+    <file>panerai-luminor-1/body.png</file>
+    <file>panerai-luminor-1/minutes.png</file>
+    <file>panerai-luminor-1/hours.png</file>
+  </gresource>
+</gresources>

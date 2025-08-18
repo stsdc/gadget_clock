@@ -2,9 +2,9 @@ gnome = import('gnome')
 i18n = import('i18n')
 
 images_gresource = gnome.compile_resources(
-    'gresource_images', 'images/images.gresource.xml',
-    source_dir: 'images/br-01-94',
-    c_name: 'as1'
+    'gresource_images', 'images.gresource.xml',
+    source_dir: 'images',
+    c_name: 'images'
 )
 
 styles_gresource = gnome.compile_resources(

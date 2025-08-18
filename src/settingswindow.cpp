@@ -17,6 +17,7 @@ SettingsWindow::SettingsWindow() : m_VBox(Gtk::Orientation::VERTICAL) {
 
   auto settings = Gio::Settings::create("io.github.stsdc.gadget_clock");
   Glib::ustring skin = settings->get_string("current-skin");
+  g_debug("SW Current skin: %s", skin.c_str());
 
   SettingsRow* settings_row = get_settings_row_by_skin_id(skin);
   auto row_to_select = settings_row ? settings_row : settingsListBox.get_row_at_index(0);
@@ -67,7 +68,10 @@ void SettingsWindow::on_setup_label(const Glib::RefPtr<Gtk::ListItem>& list_item
 void SettingsWindow::on_row_activated(Gtk::ListBoxRow* row) {
   SettingsRow* settings_row = dynamic_cast<SettingsRow*>(row);
   if (settings_row) {
-    std::cout << "Row label: " << settings_row->skin_id->c_str() << std::endl;
+    g_debug ("Selected skin: %s", settings_row->skin_id->c_str());
+
+    auto settings = Gio::Settings::create("io.github.stsdc.gadget_clock");
+    settings->set_string("current-skin", settings_row->skin_id->c_str());
     // Handle activation here
   } else {
     std::cerr << "Activated row is not a SettingsRow!" << std::endl;
