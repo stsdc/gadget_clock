@@ -1,4 +1,6 @@
 gadget_clock_sources = [
+  'settingsrow.cpp',
+  'settingswindow.cpp',
   'clock.cpp',
   'clockarea.cpp',
   'main.cpp',

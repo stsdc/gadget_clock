@@ -18,9 +18,7 @@ class ClockArea : public Gtk::DrawingArea {
 
   bool on_timeout();
 
-  double m_radius;
-  double m_line_width;
-
+  double scale_factor = 1.0;
   Glib::RefPtr<Gdk::Pixbuf> image_bg;
   Glib::RefPtr<Gdk::Pixbuf> image_sec;
   Glib::RefPtr<Gdk::Pixbuf> image_min;

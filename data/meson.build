@@ -2,9 +2,9 @@ gnome = import('gnome')
 i18n = import('i18n')
 
 images_gresource = gnome.compile_resources(
-    'gresource_images', 'images/images.gresource.xml',
+    'gresource_images', 'images.gresource.xml',
     source_dir: 'images',
-    c_name: 'as1'
+    c_name: 'images'
 )
 
 styles_gresource = gnome.compile_resources(
@@ -45,4 +45,9 @@ i18n.merge_file(
     type: 'xml',
     install: true,
     install_dir: get_option('datadir') / 'metainfo',
+)
+
+install_data(
+    meson.project_name() + '.gschema.xml',
+    install_dir: join_paths(get_option('datadir'), 'glib-2.0', 'schemas')
 )

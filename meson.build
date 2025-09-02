@@ -7,3 +7,7 @@ project('io.github.stsdc.gadget_clock', ['cpp', 'c'],
 subdir('data')
 subdir('src')
 
+gnome.post_install(
+    glib_compile_schemas: true,
+    gtk_update_icon_cache: true
+)
