@@ -14,6 +14,10 @@ void GadgetClock::on_contextmenu_settings() {
 }
 
 void GadgetClock::on_contextmenu_close() {
+  if (auto application = Gtk::Application::get_default()) {
+    application->quit();
+  }
+
   std::cout << "Close" << std::endl;
 }
 
@@ -57,8 +61,8 @@ GadgetClock::GadgetClock(const Glib::RefPtr<Gtk::Application>& app) {
       "</interface>";
 
   // Set accelerator keys:
-  app->set_accel_for_action("contextmenu.settings", "<Primary>p");
-  app->set_accel_for_action("contextmenu.close", "<Primary>q");
+  app->set_accel_for_action("contextmenu.settings", "<Control>p");
+  app->set_accel_for_action("contextmenu.close", "<Control>q");
 
   m_refBuilder = Gtk::Builder::create();
 
